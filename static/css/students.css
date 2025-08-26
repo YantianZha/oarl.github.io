@@ -1,0 +1,67 @@
+/* Container: one card per row */
+.students-list {
+  display: grid;
+  row-gap: 28px;
+  margin-top: 20px;
+  /* Kill stray paragraph wrapping from WP editors inside this block */
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* Each student row uses a fixed image column + flexible text column */
+.student-card {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  column-gap: 10px;
+  align-items: center;              /* top-align image & text */
+  width: 100%;
+  /*height: 100%;*/
+  max-width: 1000px;
+  margin: 0 auto;                  /* center the row */
+  padding-left: 10px !important;      /* nuke inherited left padding */
+  margin-bottom:  0px;
+  padding-bottom: 0px !important;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.student-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+/* Make sure no extra left space sneaks in from nested elements */
+.student-card, .student-card * {
+  box-sizing: border-box;
+}
+.students-list .student-card { margin-left: 0 !important; }
+.students-list p { margin: 0 0 6px; } /* localize paragraph margins */
+.students-list h6 { margin: 0 0 8px; font-size: 18px; font-weight: 600; }
+
+/* Circular photo, fixed size column */
+.student-card > img {
+  width: 150px;
+  aspect-ratio: 1 / 1;             /* keeps perfect square */
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+  display: block;                   /* removes inline image whitespace */
+  transition: transform 0.2s;
+}
+.student-card > img:hover { transform: scale(1.05); }
+
+.student-info a { text-decoration: none; }
+.student-info a:hover { text-decoration: underline; }
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .student-card { grid-template-columns: 110px 1fr; }
+}
+@media (max-width: 480px) {
+  .student-card { grid-template-columns: 1fr; text-align: center; }
+  .student-card > img { margin: 0 auto 12px; }
+}

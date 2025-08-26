@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    <!-- RevealJS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/blood.css" />
+
+    <!--[if gte IE 9]>
+    <style type="text/css">
+        .gradient { filter: none; }
+    </style>
+    <![endif]-->
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway:300,400,500&subset=latin' rel='stylesheet' type='text/css'>
+
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+    <title>OARL Publications</title>
+    <meta name="description" content="Publications from the Omnidomain AI and Robotics Laboratory." />
+    <link rel="canonical" href="https://aam-seals.github.io/aam-seals-v1/publications.html" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="OARL Publications" />
+    <meta property="og:description" content="Publications from the Omnidomain AI and Robotics Laboratory." />
+    <meta property="og:url" content="https://aam-seals.github.io/aam-seals-v1/publications.html" />
+    <meta property="og:site_name" content="OARL" />
+
+    <link rel="stylesheet" type="text/css" href="./static/css/FromTiger/bnfsg.css" />
+
+    <style>
+        .btn-3D {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Publications specific styles */
+        .publications-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.6;
+            background-color: #f8f8f8;
+        }
+
+        .publications-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* Category Filter Styles */
+        .category-filter {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .filter-categories {
+            display: inline-block;
+        }
+
+        .filter-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 8px 8px 0;
+            background: transparent;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .filter-btn:hover {
+            border-color: #8B1538;
+            color: #8B1538;
+            background: rgba(139, 21, 56, 0.1);
+        }
+
+        .filter-btn.active {
+            background: #8B1538;
+            border-color: #8B1538;
+            color: white;
+        }
+
+        .filter-btn.active:hover {
+            background: #6B1028;
+            border-color: #6B1028;
+        }
+
+        .year-section {
+            margin-bottom: 50px;
+        }
+
+        .year-header {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #8B1538;
+            border-bottom: 2px solid #8B1538;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .publication {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .publication:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .publication-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .publication-title a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .publication-title a:hover {
+            color: #8B1538;
+        }
+
+        .publication-venue {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .publication-authors {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .publication-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: #8B1538;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .publication-link:hover {
+            background: #6B1028;
+            color: white;
+        }
+
+        .publication-link .icon {
+            font-size: 0.9rem;
+            font-weight: normal;
+        }
+
+        .special-designation {
+            display: inline-block;
+            background: #FF6B35;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 15px;
+        }
+
+        .spotlight {
+            background: #4CAF50;
+        }
+
+        .oral {
+            background: #FF9800;
+        }
+
+        .best-paper {
+            background: #9C27B0;
+        }
+
+        .publication-abstract {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #8B1538;
+            border-radius: 0 4px 4px 0;
+            display: none;
+        }
+
+        .show-abstract {
+            color: #8B1538;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-decoration: underline;
+        }
+
+        .show-abstract:hover {
+            color: #6B1028;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .publications-container {
+                padding: 20px 15px;
+            }
+
+            .publications-title {
+                font-size: 2rem;
+            }
+
+            .year-header {
+                font-size: 1.5rem;
+            }
+
+            .publication {
+                padding: 20px;
+            }
+
+            .publication-links {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+
+    <style id='classic-theme-styles-inline-css' type='text/css'>
+        /*! This file is auto-generated */
+        .wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+    </style>
+
+    <style id='global-styles-inline-css' type='text/css'>
+        :root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;}
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="./static/css/FromTiger/bnftz.css" media="all"/>
+    <script src='./static/js/FromTiger/bnfsg.js' type="text/javascript"></script>
+
+    <!--Our CSS -->
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/window-carousel.css">
+    <link rel="stylesheet" href="./static/css/tv-effect.css">
+    <link rel="stylesheet" href="./static/css/students.css">
+    <script src="./static/js/tv-effect.js" type="text/javascript"></script>
+</head>
+
+<body class="home page-template page-template-full_width page-template-full_width-php page page-id-20996 wpb-js-composer js-comp-ver-5.7 vc_responsive">
+    <div class="ajax_loader">
+        <div class="ajax_loader_1">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="side_menu right">
+        <div class="side_menu_title"></div>
+    </section>
+
+    <div class="wrapper">
+        <div class="wrapper_inner">
+            <!-- Navigation Header -->
+            <header class="page_header fixed light">
+                <div class="header_inner clearfix">
+                    <div class="header_top_bottom_holder">
+                        <div class="header_bottom clearfix" style=''>
+                            <div class="header_inner_right">
+                                <div class="side_menu_button_wrapper right">
+                                    <div class="side_menu_button">
+                                        <a class="side_menu_button_link" href="javascript:void(0)">
+                                            <i class="fa fa-bars"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <nav class="main_menu drop_down right">
+                                <ul id="menu-top-menu-2024" class="">
+                                    <li id="nav-menu-item-20915" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children has_sub narrow">
+                                        <a href="index.html" target="_blank" class="">
+                                            <i class="menu_icon fa blank"></i>
+                                            <span style="color: black">Home</span>
+                                            <span class="line"></span>
+                                        </a>
+                                    </li>
+                                    <li id="nav-menu-item-20925" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children has_sub narrow">
+                                        <a href="https://arxiv.org/abs/2412.19744" target="_blank" class="">
+                                            <i class="menu_icon fa blank"></i>
+                                            <span style="color: black">Research</span>
+                                            <span class="line"></span>
+                                        </a>
+                                        <div class="second bellow_header">
+                                            <div class="inner">
+                                                <div class="inner_arrow"></div>
+                                                <ul>
+                                                    <li id="nav-menu-item-20926" class="menu-item menu-item-type-custom menu-item-object-custom">
+                                                        <a href="https://arxiv.org/abs/2412.19744" target="_blank" class="">
+                                                            <i class="menu_icon fa blank"></i>
+                                                            <span>Projects</span>
+                                                            <span class="line"></span>
+                                                        </a>
+                                                    </li>
+                                                    <li id="nav-menu-item-20927" class="menu-item menu-item-type-custom menu-item-object-custom">
+                                                        <a href="publications.html" class="">
+                                                            <i class="menu_icon fa blank"></i>
+                                                            <span>Publications</span>
+                                                            <span class="line"></span>
+                                                        </a>
+                                                    </li>
+                                                    <li id="nav-menu-item-20928" class="menu-item menu-item-type-custom menu-item-object-custom">
+                                                        <a href="https://drive.google.com/file/d/1wyj_gF96U6ELItr4Ddl8YfpxQvU9X6Ps/view?usp=sharing" target="_blank" class="">
+                                                            <i class="menu_icon fa blank"></i>
+                                                            <span>Equipments</span>
+                                                            <span class="line"></span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li id="nav-menu-item-20930" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children has_sub narrow">
+                                        <a href="index_people.html" class="">
+                                            <i class="menu_icon fa blank"></i>
+                                            <span style="color: black">People</span>
+                                            <span class="line"></span>
+                                        </a>
+                                    </li>
+                                    <li id="nav-menu-item-20951" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children has_sub narrow">
+                                        <a href="" class="">
+                                            <i class="menu_icon fa blank"></i>
+                                            <span style="color: black">Courses</span>
+                                            <span class="line"></span>
+                                        </a>
+                                    </li>
+                                    <li id="nav-menu-item-20960" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children has_sub narrow">
+                                        <a href="" class="">
+                                            <i class="menu_icon fa blank"></i>
+                                            <span style="color: black">Photos</span>
+                                            <span class="line"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <a id='back_to_top' href='#'>
+                <span class="fa-stack">
+                    <i class="fa fa-angle-up" style=""></i>
+                </span>
+            </a>
+
+            <!-- Main Publications Content -->
+            <div class="publications-container">
+                <div class="publications-header">
+                    <h1 class="publications-title">Publications</h1>
+
+                    <!-- Category Filter Section -->
+                    <div class="category-filter">
+                        <div class="filter-categories">
+                            <button class="filter-btn active" data-category="all">Show all</button>
+                            <button class="filter-btn" data-category="robotics">Robotics</button>
+                            <button class="filter-btn" data-category="perception">Computer Vision</button>
+                            <button class="filter-btn" data-category="rl">Reinforcement Learning</button>
+                            <button class="filter-btn" data-category="robustness">Explainability</button>
+                            <button class="filter-btn" data-category="underwater">Underwater Systems</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2025 Publications -->
+                <div class="year-section">
+                    <h2 class="year-header">2025</h2>
+
+                    <div class="publication" data-categories="robotics underwater perception">
+                        <h3 class="publication-title">
+                            <a href="https://arxiv.org/pdf/2412.19744" target="_blank">
+                                AAM-SEALS: Developing Aerial-Aquatic Manipulators in SEa, Air, and Land Simulator
+                            </a>
+                            <span class="special-designation">ICRA Workshop</span>
+                        </h3>
+                        <div class="publication-venue">
+                            arXiv, 2024; ICRA Amphibious Robotics Workshop, 2025
+                        </div>
+                        <div class="publication-authors">
+                            William Yang, Karthikeya Kona, Yashveer Jain, Abhinav Bhamidipati, Tomer Atzili, Xiaomin Lin, Yantian Zha
+                        </div>
+                        <div class="publication-links">
+                            <a href="https://arxiv.org/pdf/2412.19744" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Paper
+                            </a>
+                            <a href="https://aam-seals.umd.edu/" class="publication-link" target="_blank">
+                                <span class="icon">🌐</span>Website
+                            </a>
+                            <a href="https://drive.google.com/file/d/1wyj_gF96U6ELItr4Ddl8YfpxQvU9X6Ps/view?usp=sharing" class="publication-link" target="_blank">
+                                <span class="icon">🖼️</span>Poster
+                            </a>
+                        </div>
+                        <div class="show-abstract" onclick="toggleAbstract(this)">Show Abstract</div>
+                        <div class="publication-abstract">
+                            This paper presents AAM-SEALS, a comprehensive simulator for developing aerial-aquatic manipulators that can operate seamlessly across sea, air, and land environments, addressing the unique challenges of cross-medium robotic systems.
+                        </div>
+                    </div>
+
+                    <div class="publication" data-categories="robotics perception">
+                        <h3 class="publication-title">
+                            <a href="https://arxiv.org/pdf/2502.16718" target="_blank">
+                                NatSGLD: A Dataset with Speech, Gestures, Logic, and Demonstrations for Robot Learning in Natural Human-Robot Interaction
+                            </a>
+                        </h3>
+                        <div class="publication-venue">
+                            IEEE/ACM International Conference on Human-Robot Interaction (Data Paper), 2025
+                        </div>
+                        <div class="publication-authors">
+                            Snehesh Shrestha, Yantian Zha, Saketh Banagiri, Ge Gao, Yiannis Aloimonos, Cornelia Fermüller
+                        </div>
+                        <div class="publication-links">
+                            <a href="https://arxiv.org/pdf/2502.16718" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Paper
+                            </a>
+                            <a href="http://www.snehesh.com/natsgld/" class="publication-link" target="_blank">
+                                <span class="icon">🌐</span>Website
+                            </a>
+                        </div>
+                        <div class="show-abstract" onclick="toggleAbstract(this)">Show Abstract</div>
+                        <div class="publication-abstract">
+                            NatSGLD is a comprehensive dataset that combines speech, gestures, logic, and demonstrations to enable more natural human-robot interaction and improve robot learning from multimodal human input.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2024 Publications -->
+                <div class="year-section">
+                    <h2 class="year-header">2024</h2>
+
+                    <div class="publication" data-categories="perception rl">
+                        <h3 class="publication-title">
+                            <a href="https://openreview.net/forum?id=otKo4zFKmH#discussion" target="_blank">
+                                "Task Success" is not Enough: Investigating the Use of Video-Language Models as Behavior Critics for Catching Undesirable Agent Behaviors
+                            </a>
+                        </h3>
+                        <div class="publication-venue">
+                            Conference on Language Modeling (COLM), 2024
+                        </div>
+                        <div class="publication-authors">
+                            Lin Guan, Yifan Zhou, Denis Liu, Yantian Zha, Heni Ben Amor, Subbarao Kambhampati
+                        </div>
+                        <div class="publication-links">
+                            <a href="https://openreview.net/forum?id=otKo4zFKmH#discussion" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Paper
+                            </a>
+                            <a href="https://guansuns.github.io/pages/vlm-critic/" class="publication-link" target="_blank">
+                                <span class="icon">🌐</span>Website
+                            </a>
+                        </div>
+                        <div class="show-abstract" onclick="toggleAbstract(this)">Show Abstract</div>
+                        <div class="publication-abstract">
+                            This work investigates the use of video-language models as behavior critics to identify and prevent undesirable agent behaviors beyond simple task success metrics, enhancing the safety and reliability of AI systems.
+                        </div>
+                    </div>
+
+                    <div class="publication" data-categories="rl robustness">
+                        <h3 class="publication-title">
+                            <a href="https://arxiv.org/pdf/2110.05286.pdf" target="_blank">
+                                Learning from Ambiguous Demonstrations with Self-Explanation Guided Reinforcement Learning
+                            </a>
+                        </h3>
+                        <div class="publication-venue">
+                            AAAI Conference on Artificial Intelligence, 2024 (Main Track)
+                        </div>
+                        <div class="publication-authors">
+                            Yantian Zha, Lin Guan, Subbarao Kambhampati
+                        </div>
+                        <div class="publication-links">
+                            <a href="https://arxiv.org/pdf/2110.05286.pdf" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Paper
+                            </a>
+                            <a href="https://github.com/YantianZha/SERLfD" class="publication-link" target="_blank">
+                                <span class="icon">💻</span>Code
+                            </a>
+                            <a href="https://yantianzha.github.io/serlfd_slides/" class="publication-link" target="_blank">
+                                <span class="icon">📊</span>Slides
+                            </a>
+                        </div>
+                        <div class="show-abstract" onclick="toggleAbstract(this)">Show Abstract</div>
+                        <div class="publication-abstract">
+                            This paper presents a novel approach for learning from ambiguous demonstrations using self-explanation guided reinforcement learning, enabling agents to better understand and replicate complex behaviors from unclear or incomplete demonstrations.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2022 Publications -->
+                <div class="year-section">
+                    <h2 class="year-header">2022</h2>
+
+                    <div class="publication" data-categories="robustness">
+                        <h3 class="publication-title">
+                            <a href="https://arxiv.org/pdf/2109.09904.pdf" target="_blank">
+                                Symbols as a Lingua Franca for Bridging Human-AI Chasm for Explainable and Advisable AI Systems
+                            </a>
+                            <span class="special-designation">Blue Sky Paper</span>
+                        </h3>
+                        <div class="publication-venue">
+                            AAAI Conference on Artificial Intelligence (Senior Member Presentation Track), 2022
+                        </div>
+                        <div class="publication-authors">
+                            Subbarao Kambhampati, Sarath Sreedharan, Mudit Verma, Yantian Zha, Lin Guan
+                        </div>
+                        <div class="publication-links">
+                            <a href="https://arxiv.org/pdf/2109.09904.pdf" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Paper
+                            </a>
+                        </div>
+                        <div class="show-abstract" onclick="toggleAbstract(this)">Show Abstract</div>
+                        <div class="publication-abstract">
+                            This paper proposes using symbols as a universal language to bridge the gap between human understanding and AI systems, enabling more explainable and advisable AI through symbolic representations.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2021 Publications -->
+                <div class="year-section">
+                    <h2 class="year-header">2021</h2>
+
+                    <div class="publication" data-categories="robotics perception">
+                        <h3 class="publication-title">
+                            <a href="https://arxiv.org/abs/2104.00878" target="_blank">
+                                Contrastively Learning Visual Attention as Affordance Cues from Demonstrations for Robotic Grasping
+                            </a>
+                        </h3>
+                        <div class="publication-venue">
+                            IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2021
+                        </div>
+                        <div class="publication-authors">
+                            Yantian Zha, Siddhant Bhambri, Lin Guan
+                        </div>
+                        <div class="publication-links">
+                            <a href="https://arxiv.org/abs/2104.00878" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Paper
+                            </a>
+                            <a href="https://sites.google.com/asu.edu/affordance-aware-imitation/project" class="publication-link" target="_blank">
+                                <span class="icon">🌐</span>Project
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=K71EAN5tNaI" class="publication-link" target="_blank">
+                                <span class="icon">▶️</span>IROS Talk
+                            </a>
+                            <a href="https://yantianzha.github.io/AAIL_Slides/" class="publication-link" target="_blank">
+                                <span class="icon">📊</span>Slides
+                            </a>
+                        </div>
+                        <div class="show-abstract" onclick="toggleAbstract(this)">Show Abstract</div>
+                        <div class="publication-abstract">
+                            This work presents a novel approach for learning visual attention as affordance cues from human demonstrations to improve robotic grasping performance through contrastive learning techniques.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2019 Publications -->
+                <div class="year-section">
+                    <h2 class="year-header">2019</h2>
+
+                    <div class="publication" data-categories="perception">
+                        <h3 class="publication-title">
+                            <a href="https://arxiv.org/abs/1812.00301" target="_blank">
+                                Plan-Recognition-Driven Attention Modeling for Visual Recognition
+                            </a>
+                        </h3>
+                        <div class="publication-venue">
+                            AAAI Workshop on Plan, Activity, and Intent Recognition (PAIR), 2019
+                        </div>
+                        <div class="publication-authors">
+                            Yantian Zha, Yikang Li, Tianshu Yu, Subbarao Kambhampati, Baoxin Li
+                        </div>
+                        <div class="publication-links">
+                            <a href="https://arxiv.org/abs/1812.00301" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Paper
+                            </a>
+                        </div>
+                        <div class="show-abstract" onclick="toggleAbstract(this)">Show Abstract</div>
+                        <div class="publication-abstract">
+                            This paper proposes a plan-recognition-driven approach to attention modeling that enhances visual recognition by incorporating understanding of underlying plans and intentions.
+                        </div>
+                    </div>
+
+                    <div class="publication" data-categories="robustness">
+                        <h3 class="publication-title">
+                            <a href="https://yochan-lab.github.io/papers/files/papers/hankz_tist_19.pdf" target="_blank">
+                                Discovering Underlying Plans Based on Shallow Models
+                            </a>
+                        </h3>
+                        <div class="publication-venue">
+                            ACM Transactions on Intelligent Systems and Technology (ACM-TIST), 2019
+                        </div>
+                        <div class="publication-authors">
+                            Hankz Hankui Zhuo, Yantian Zha, Subbarao Kambhampati, Xin Tian
+                        </div>
+                        <div class="publication-links">
+                            <a href="https://yochan-lab.github.io/papers/files/papers/hankz_tist_19.pdf" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Paper
+                            </a>
+                            <a href="https://github.com/YantianZha/Discovering-Underlying-Plans-Based-on-Shallow-Models" class="publication-link" target="_blank">
+                                <span class="icon">💻</span>Code
+                            </a>
+                        </div>
+                        <div class="show-abstract" onclick="toggleAbstract(this)">Show Abstract</div>
+                        <div class="publication-abstract">
+                            This work presents methods for discovering underlying plans from observed behaviors using shallow models, enabling better understanding of complex decision-making processes.
+                        </div>
+                    </div>
+
+                    <div class="publication" data-categories="robustness">
+                        <h3 class="publication-title">
+                            <a href="https://yochan-lab.github.io/papers/files/papers/anagha-aamas-2019.pdf" target="_blank">
+                                Explicability as Minimizing Distance from Expected Behavior
+                            </a>
+                        </h3>
+                        <div class="publication-venue">
+                            International Conference on Autonomous Agents and Multiagent Systems (AAMAS), 2019
+                        </div>
+                        <div class="publication-authors">
+                            Anagha Kulkarni, Yantian Zha, Tathagata Chakraborti, Satya Gautam Vadlamudi, Yu Zhang, Subbarao Kambhampati
+                        </div>
+                        <div class="publication-links">
+                            <a href="https://yochan-lab.github.io/papers/files/papers/anagha-aamas-2019.pdf" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Paper
+                            </a>
+                            <a href="https://arxiv.org/abs/1611.05497" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Full Paper
+                            </a>
+                            <a href="https://youtu.be/iLG-ANQtYms" class="publication-link" target="_blank">
+                                <span class="icon">▶️</span>Demo Video
+                            </a>
+                        </div>
+                        <div class="show-abstract" onclick="toggleAbstract(this)">Show Abstract</div>
+                        <div class="publication-abstract">
+                            This paper presents a framework for explicability that focuses on minimizing the distance from expected behavior, providing a principled approach to generating explanations for AI systems.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2018 Publications -->
+                <div class="year-section">
+                    <h2 class="year-header">2018</h2>
+
+                    <div class="publication" data-categories="perception">
+                        <h3 class="publication-title">
+                            <a href="https://dl.acm.org/citation.cfm?id=3238103" target="_blank">
+                                Recognizing Plans by Learning Embeddings from Observed Action Distributions
+                            </a>
+                        </h3>
+                        <div class="publication-venue">
+                            International Conference on Autonomous Agents and Multiagent Systems (AAMAS), 2018
+                        </div>
+                        <div class="publication-authors">
+                            Yantian Zha, Yikang Li, Sriram Gopalakrishnan, Baoxin Li, Subbarao Kambhampati
+                        </div>
+                        <div class="publication-links">
+                            <a href="https://dl.acm.org/citation.cfm?id=3238103" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Paper
+                            </a>
+                            <a href="https://arxiv.org/abs/1712.01949" class="publication-link" target="_blank">
+                                <span class="icon">📄</span>Full Paper
+                            </a>
+                            <a href="https://github.com/YantianZha/Distr2Vec" class="publication-link" target="_blank">
+                                <span class="icon">💻</span>Code
+                            </a>
+                            <a href="https://drive.google.com/open?id=19dSk2Qk2vEqwJXBzbN1XoQJIa-YdMGdY" class="publication-link" target="_blank">
+                                <span class="icon">📊</span>Slides
+                            </a>
+                            <a href="https://drive.google.com/open?id=1suKUc865_NNMMnSSXEqJIA7gmjAKlOb2" class="publication-link" target="_blank">
+                                <span class="icon">🖼️</span>Poster
+                            </a>
+                        </div>
+                        <div class="show-abstract" onclick="toggleAbstract(this)">Show Abstract</div>
+                        <div class="publication-abstract">
+                            This work presents a novel approach to plan recognition by learning embeddings from observed action distributions, enabling more robust and accurate understanding of agent intentions.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <div class="vc_row wpb_row section grid_section" style='padding-top:44px; padding-bottom:24px; text-align:left;'>
+                    <div class="section_inner clearfix">
+                        <div class="abstract">
+                            <p>Website designed by Yantian Zha</p>
+                            <p>Contact: ytzha@umd.edu</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="./static/js/FromTiger/qode-like.js"></script>
+    <script type="text/javascript" src="./static/js/FromTiger/plugins.js"></script>
+    <script type="text/javascript" src="./static/js/FromTiger/jquery.carouFredSel-6.2.1.js"></script>
+    <script type="text/javascript" src="./static/js/FromTiger/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="./static/js/FromTiger/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="./static/js/FromTiger/default_dynamic.php.js"></script>
+    <script type="text/javascript" src="./static/js/FromTiger/default.min.js"></script>
+    <script type="text/javascript" src="./static/js/FromTiger/custom_js.php.js"></script>
+
+    <script>
+        // Category filtering functionality
+        function initializeFiltering() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const publications = document.querySelectorAll('.publication');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const selectedCategory = this.getAttribute('data-category');
+
+                    publications.forEach(publication => {
+                        const categories = publication.getAttribute('data-categories');
+
+                        if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
+                            publication.style.display = 'block';
+                            // Add fade-in animation
+                            publication.style.opacity = '0';
+                            setTimeout(() => {
+                                publication.style.opacity = '1';
+                            }, 100);
+                        } else {
+                            publication.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Function to toggle abstract visibility
+        function toggleAbstract(element) {
+            const abstract = element.nextElementSibling;
+            const isVisible = abstract.style.display === 'block';
+
+            if (isVisible) {
+                abstract.style.display = 'none';
+                element.textContent = 'Show Abstract';
+            } else {
+                abstract.style.display = 'block';
+                element.textContent = 'Hide Abstract';
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFiltering();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Back to top functionality
+        const backToTop = document.getElementById('back_to_top');
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        backToTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
