@@ -246,6 +246,59 @@ text-decoration: line-through;
                     </div>
                 </div>
 
+                <!-- 2026 Publications -->
+                <div class="year-section">
+                    <h2 class="year-header">2026</h2>
+
+                    <!-- Example of another publication for comparison -->
+                    <div class="publication" data-categories="robotics dataset simulator">
+                        <div class="publication-header">
+                            <!-- Video section with proper size -->
+                            <div class="publication-video-large">
+                                <iframe
+                                    src="https://www.youtube.com/embed/ZrKgq_Yi6fk?si=la0ZrGaBlgDd9SdM"
+                                    title="Video2SwimFish Demo Video"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+
+
+                            <!-- Text section with readable font sizes -->
+                            <div class="publication-text">
+                                <h3 class="publication-title">
+                                    <a href="https://arxiv.org/pdf/2609.38966" target="_blank">
+                                        Video2SwimFish: An Automated Pipeline for Reconstructing Controllable Fish Models and Biological Locomotion from Real Fish Videos
+                                    </a>
+                                    <span class="special-designation">arXiv-26</span>
+                                </h3>
+<!--                                <div class="publication-venue">-->
+<!--                                    arXiv, 2026-->
+<!--                                </div>-->
+                                <div class="publication-authors">
+                                    Hangong Chen, Linfeng Cheng, Tahsin Zaman Jilan, Ian Fuller, Lee Caesar, Jiaye Wu, Yantian Zha
+                                </div>
+
+                                <!-- Links and abstract -->
+                                <div class="publication-links">
+                                    <a href="https://arxiv.org/pdf/2609.38966" class="publication-link" target="_blank">
+                                        <span class="icon">📄</span>Paper
+                                    </a>
+                                    <a href="https://hangongchen.github.io/video2swimfish-web/" class="publication-link" target="_blank">
+                                        <span class="icon">🌐</span>Website
+                                    </a>
+                                </div>
+                                <div class="show-abstract" onclick="toggleAbstract(this)">Show Abstract</div>
+                                <div class="publication-abstract">
+                                    We present Video2SwimFish, an automated pipeline and benchmark for building controllable fish assets from real-fish videos for underwater embodied AI. Given synchronized multi-view videos of an individual fish, the pipeline reconstructs a metrically scaled deformable mesh from a VLM-selected canonical frame, generates internal articulation adapted to that individual’s morphology through a VLM actor–critic loop, and extracts a Biological Locomotion Manifold (BLM) from the fish’s observed midline curvature. The BLM provides a low-dimensional action space bounded by real-fish motion, enabling an individual swimming policy to be learned for each reconstructed fish. We release two paired datasets: synchronized top- and front-view recordings of 120 individual fish across 6 species, and the controllable assets and individual swimming policies derived from them. Because every asset is tied to the animal it came from, the dataset supports a benchmark that evaluates locomotion learning not only on task success but on fidelity to that individual in trajectory shape, body curvature, and tail-beat frequency, across trajectory following, reward-free swimming behavior transfer from video, and a downstream case study in which a simulated BlueROV underwater robot captures one of the assets. We find that task success and locomotion fidelity do not necessarily improve together: the method achieving the highest task completion is not the method achieving the highest locomotion fidelity, and we identify faithful reproduction of individual animal locomotion as an open challenge for the community. 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                    
                 <!-- 2025 Publications -->
                 <div class="year-section">
                     <h2 class="year-header">2025</h2>
@@ -303,7 +356,7 @@ text-decoration: line-through;
                             <div class="publication-video-large">
                                 <iframe
                                     src="https://www.youtube.com/embed/gVx3UEleljk?autoplay=1&mute=1&loop=1&playlist=gVx3UEleljk"
-                                    title="AAM-SEALS Demo Video"
+                                    title="NatSGLD Video"
                                     frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen>
